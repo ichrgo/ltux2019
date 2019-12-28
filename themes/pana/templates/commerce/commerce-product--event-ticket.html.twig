@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+	'product-post',
+	'pricing-table',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+	<div class="text-center pricing-wrap">
+		<div class="pricing-header">
+			<div class="pricing-name">{{ product.variation_title }}</div>
+			<div class="pricing-pice">{{ product.variation_price }}</div>
+			{% if product.body | render %}
+			<div class="text-sm pricing-body">{{ product.body }}</div>
+			{% endif %}
+		</div>
+		<div class="pricing-content">
+			{% if product.field_ticket_feature | render %}
+			<div class="pricing-features">{{ product.field_ticket_feature }}</div>
+			{% endif %}
+				
+			<div class="ticket-button pricing-btn">
+			{{ product.variations }}
+			</div>
+		</div>
+	</div>
+</div>

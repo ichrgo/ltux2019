@@ -1,0 +1,102 @@
+/* ---------- Color Module Styles ----------- */
+a:hover,
+/*a:focus,*/
+.sm a:hover, .sm a:focus, .sm a:active, .sm a.highlighted, .sm a.current, .sm a.is-active,
+.footer-widget a:hover,
+.tag-cloud li .tag-name a:hover,
+.messages a,
+.single-page nav .nav.menu li.active a,
+.maintenance-icon,
+.feat-icon,
+.sidebar ul.menu li a.is-active,
+.sm-menu a.current,
+.shuffle-filters-item.active,
+.product-price,
+.facet-list .is-active .js-facet-deactivate,
+.ui-widget-content a,
+.pricing-table .pricing-pice,
+.group-event-title-wrap .group-event-title,
+.event-session-item .session-time,
+.event-session .toggle-nav,
+.menu-tab-wrapper .nav-tabs > li.active > a,
+.fact .count-number,
+.event-teaser .event-date-day,
+.event-teaser .event-price,
+.text-colored,
+.text-colored *,
+.color-text,
+.color-text * {
+    color: #8546c9;
+}
+
+.navbar-toggler.nav-button,
+.tag-cloud li a:hover,
+.blog-post-teaser .post-date,
+.pager li.is-active a,
+.pager li.pager__item.is-active > a,
+.pager li > a:hover,
+#page-title.title-colored-bg,
+.panel-heading.colored .panel-title > a, 
+.panel-heading.colored .panel-title > a.collapsed:hover, 
+.panel-heading.colored .panel-title > a:hover, 
+.panel-heading.colored .panel-title > a.collapsed,
+.colored-bg,
+.button,
+.btn-primary,
+input[type="submit"],
+.search-content input[type="submit"],
+.preloader-spinner,
+.colored-footer .footer-widget,
+.colored-footer .footer-bottom,
+.team-teaser .team-quick-view:after,
+.team-teaser .team-meta-wrap:before,
+.feat-teaser:hover .feat-img:after,
+.progress-bar-wrap,
+.sidenav.sidenav-colored,
+.button-cta,
+.toggle-nav,
+.cart-block-link a,
+.product-featured-text,
+.product-category-name:before,
+.product-category-name:after,
+.product-category:hover .product-category-name,
+.product-teaser .product-add-cart input[type="submit"],
+.product-teaser .product-btn-link:hover,
+.grid-menu-item .menu-price-amount,
+.event-session .toggle-item-icon,
+.event-session-item .toggle-nav,
+ul.quicktabs-tabs li.active a,
+.schedule-tab-vertical ul.quicktabs-tabs li.active a:before,
+.session-wrapper .session-meta,
+.event-post .event-meta-wrap,
+.event-category-list:hover .event-category-name a,
+.blog-post-teaser:hover .content-wrap:before {
+    background-color: #8546c9;
+}
+
+.tag-cloud li a:hover,
+.pager li.is-active a,
+.pager li.pager__item.is-active > a,
+.pager li > a:hover,
+.btn-primary,
+.search-block-form input[type="submit"],
+.search-form input[type="submit"],
+.social-icon li a:hover,
+.schedule-table table,
+.schedule-table thead tr,
+ul.quicktabs-tabs li.active a,
+blockquote {
+	border-color: #8546c9;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+body {
+  color: #555555;
+}
+
+.wrapper .layout-wrap {
+	background-color: #ffffff;
+}

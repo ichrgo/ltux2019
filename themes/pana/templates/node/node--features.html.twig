@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node-type-' ~ node.bundle|clean_class,
+	'node-content',
+	'feat-node-content',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+
+{% if teaser %}
+<div{{ attributes.addClass('feat-container feat-teaser') }}>
+	{{ title_prefix }}
+	{{ title_suffix }}
+	<div class="text-center feat-image">
+	{% if content.field_image | render %}
+	<div class="feat-img">{{ content.field_image }}</div>
+	{% endif %}
+	<div class="feat-content">
+	<div class="feat-content-container">
+		<div class="feat-meta-wrap">
+		<div class="feat-meta">
+		{% if content.field_icon | render %}
+		<div class="feat-icon"><i class="fa {{ node.field_icon.value }}"></i></div>
+		{% endif %}
+		<h5 class="mb-3"><a href="{{ url }}">{{ label }}</a></h5>
+		<div class="feat-body">{{ content.body }}</div>
+		</div>
+		<div class="post-link">
+		<a href="{{ url }}" class="margin-top-20">More Details <i class="fa fa-angle-double-right"></i></a>
+		</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</div>
+{% else %}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+	{% if content.field_image | render %}
+	<div class="node-feat-image">{{ content.field_image }}</div>
+	{% endif %}
+	<h2 class="post-title">{% if content.field_icon | render %}<i class="fa {{ node.field_icon.value }}"></i> {% endif %}{{ label }}</h2>
+	<div class="post-content">{{ content.body }}</div>
+</div>
+{% endif %}

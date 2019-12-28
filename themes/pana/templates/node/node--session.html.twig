@@ -1,0 +1,100 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node-type-' ~ node.bundle|clean_class,
+	'node-content',
+	'session-wrapper',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+  ]
+%}
+
+{% if teaser %}
+<div{{ attributes.addClass('event-session-teaser') }}>
+<div class="event-session-item">
+	{% if content.field_event_speaker | render %}
+	<div class="session-content-speaker">
+	<div class="session-speaker">
+	{{ content.field_event_speaker }}
+	</div>
+	</div>
+	{% endif %}
+	<div class="session-content-wrap">
+	<div class="session-time">{{ content.field_event_time }}</div>
+	<h5 class="toggle-title collapsed session-title" data-toggle="collapse" data-target="#session-{{ node.nid.value }}">{{ label }}</h5>
+	<div id="session-{{ node.nid.value }}" class="collapse session-content">
+		<div class="session-body">{{ content.body }}</div>
+		<div class="session-content-meta">
+		{% if content.field_event_venue | render %}
+		<div class="session-content-meta-item session-venue">
+		<span class="session-content-meta-icon ion-ios-location"></span>
+		{{ content.field_event_venue }}
+		</div>
+		{% endif %}
+		{% if content.field_sponsor | render %}
+		<div class="session-content-meta-item session-sponsor">
+		{{ content.field_sponsor }}
+		</div>
+		{% endif %}
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+
+{% else %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+	<div class="row">	
+	<div class="col-12 col-md-8">
+		<div class="mb-4 post-thumb">
+		{% if content.field_image | render %}
+		<div class="post-image">{{ content.field_image }}</div>
+		{% endif %}
+		{% if content.field_event_time %}
+		<div class="session-meta">
+		<i class="ion-ios-clock-outline"></i>
+		<div class="session-time"><span class="session-meta-title">Time:</span> <div class="session-meta-content">{{ content.field_event_time }}</div></div>
+		<div class="session-date"><span class="session-meta-title">Date:</span> <div class="session-meta-content">{{ node.field_event_time.value | date("j F Y") }}</div></div>
+		</div>
+		{% endif %}
+		</div>
+		<h3 class="session-title">{{ label }}</h3>
+		<div class="session-content">{{ content.body }}</div>
+	</div>
+
+	<div class="col-12 col-md-4">
+		{% if content.field_event_speaker or content.field_sponsor or content.field_event_venue %}
+		<div class="text-center event-session-wrap">
+		{% if content.field_event_venue | render %}
+		<div class="session-item session-venue">
+		<div class="session-item-content"><i class="ion-ios-location"></i> {{ content.field_event_venue }}</div>
+		</div>
+		{% endif %}			
+		{% if content.field_event_speaker | render %}
+		<div class="session-item session-speaker">
+		<h4 class="session-item-title"><i class="ion-mic-a"></i> Speaker</h4>
+		<div class="session-item-content">{{ content.field_event_speaker }}</div>
+		</div>
+		{% endif %}
+		{% if content.field_sponsor | render %}
+		<div class="session-item session-sponsor">
+		<h4 class="session-item-title"><i class="ion-ribbon-b"></i> Sponsor</h4>
+		<div class="session-item-content">{{ content.field_sponsor }}</div>
+		</div>
+		{% endif %}	
+		</div>
+		{% endif %}	
+	</div>
+	</div>
+</div>
+{% endif %}

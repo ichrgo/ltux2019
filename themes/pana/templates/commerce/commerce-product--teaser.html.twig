@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+	'product-teaser',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+<div class="post-image product-image">
+{{ product.field_image.0 }}
+{% if product.field_image.1 %}
+<div class="product-image-overlay">{{ product.field_image.1 }}</div>
+{% endif %}
+<div class="text-center product-btn-wrap">
+<div class="product-btn product-view"><a href="{{ product_url }}" class="product-btn-link use-ajax" data-dialog-options="{&quot;width&quot;:680}" data-dialog-type="modal"><span class="product-btn-title">Quick View</span></a></div>
+<div class="product-btn product-add-cart">{{ product.variations }}</div>
+</div>
+</div>
+
+<div class="product-meta-wrap">
+<div class="product-meta">
+<div class="product-title"><a href="{{ product_url }}">{{ product.title }}</a></div>
+<div class="product-price-wrap">
+	<div class="product-price">{{ product.variation_price }}</div> 
+</div>
+</div>
+</div>
+
+</div>

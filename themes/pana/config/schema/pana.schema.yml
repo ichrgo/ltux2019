@@ -1,0 +1,4 @@
+# Schema for the configuration files of the pana theme.
+pana.settings:
+  type: theme_settings
+  label: 'pana Settings'

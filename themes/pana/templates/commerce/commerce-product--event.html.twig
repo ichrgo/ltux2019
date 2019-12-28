@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+	'product-post',
+	'event-post',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="product-image">{{ product.field_image }}</div>
+		</div>
+		<div class="col-md-6 product-content-wrap event-content-wrap">
+			<div class="event-category">{{ product.field_event_category }}</div>
+			<div class="event-title">
+			<div class="product-title">{{ product.variation_title }}</div> 
+			<div class="product-price">{{ product.variation_price }}</div>
+			</div>
+			<div class="event-meta-wrap">
+				<div class="row event-duration">
+				<div class="col-md-4 event-date">
+				<h6 class="event-meta-tile">Date</h6>
+				{{ product_entity.field_event_time.value | date("F jS Y") }}
+				</div>
+				<div class="col-md-3 event-time">
+				<h6 class="event-meta-tile">Time</h6>
+				{{ product_entity.field_event_time.value | date("g:i A") }}
+				</div>
+				
+			<div class="col-md-5 event-venue-wrap">
+			<h6 class="event-meta-tile">Venue</h6>
+			<div class="event-venue">{{ product_entity.field_event_venue.value }}<span>,</span></div>
+			<div class="event-location">{{ product.field_event_location }}</div>
+			</div>
+				</div>
+			
+			</div>
+			<div class="product-body">{{ product.body }}</div>
+			
+			<div class="product-variation-wrap clearfix">
+				<div class="ticket-button product-add-cart">{{ product.variations }}</div>
+			</div>
+			
+	{{- product|without('variation_attributes','variation_price','variation_title','variations','field_image','field_event_time','field_event_category','field_event_location','field_event_venue','body') -}}
+	
+		</div>
+	</div>
+
+</div>

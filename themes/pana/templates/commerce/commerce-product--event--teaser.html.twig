@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+	'product-teaser',
+	'event-teaser',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+
+<div class="event-image">{{ product.field_image }}</div>
+<div class="event-content-wrap">
+<div class="event-content-container">
+	<div class="event-content">
+		<div class="event-title">
+		<a href="{{ product_url }}">{{ product.title }}</a>
+		<div class="event-price">{{ product.variation_price }}</div>
+		</div>
+		<div class="event-meta">
+		<div class="event-date-wrap">
+			<div class="event-date">
+			<span class="event-date-day">{{ product_entity.field_event_time.value | date("jS") }}</span>
+			<span class="event-date-month">{{ product_entity.field_event_time.value | date("M") }}</span>
+			<span class="event-date-year">{{ product_entity.field_event_time.value | date("Y") }}</span>
+			</div>
+		</div>
+		<div class="event-time">
+		<span class="ion-ios-clock-outline"></span> {{ product_entity.field_event_time.value | date("g:i A") }}
+		</div>
+		<div class="event-venue-wrap">
+		<span class="ion-ios-location"></span>
+		<div class="event-venue">{{ product_entity.field_event_venue.value }}<span>,</span></div>
+		<div class="event-location">{{ product.field_event_location }}</div>
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="event-button">
+	<a class="button" href="{{ product_url }}">Get Tickets</a>
+</div>
+
+</div>
